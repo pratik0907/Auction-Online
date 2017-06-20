@@ -2,35 +2,50 @@
 
 class AuctionsController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	
 	public function index()
 	{
 		//
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function towards_home()
 	{
-		return View::make('auctions.auctions_create');
+		return View::make('home');
 	}
 
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	public function create()
+	{
+		if(Auth::check())
+		{
+			return View::make('auctions.auctions_create');
+		}
+		return Redirect::to('/login');
+		
+	}
+
+	public function auction_details($sid)
+	{
+		$listing = Auction::find($sid);
+		//$bid = Bid::find($sid);
+		if(empty($listing))
+		{
+			return "Invalid url";
+		}
+		return View::make('auctions.show')->with('listing',$listing);
+	}
+
+
 	public function store()
 	{
+
+		$validator= Validator::make(Input::all(),['auction_name'=>'required','min_bid'=>'required','reserved_price'=>'required','selling_price'=>'required','start_date'=>'required','start_time'=>'required','end_date'=>'required','end_time'=>'required','status'=>'required']);
+
+		if($validator->fails())
+		{
+			return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
+
 		$auctions = new Auction;
 		$auctions->auction_name = Input::get('auction_name');
 		$auctions->min_bid = Input::get('min_bid');
@@ -49,48 +64,26 @@ class AuctionsController extends \BaseController {
 	}
 
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+
+	public function show()
 	{
-		//
+		$listings = Auction::all();
+		return View::make('auctions.auctions_listings')->with('listings',$listings);
 	}
 
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
 		//
 	}
 
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
 		//
 	}
 
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy($id)
 	{
 		//

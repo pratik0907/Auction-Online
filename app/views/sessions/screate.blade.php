@@ -24,8 +24,14 @@
 		
 	</ul>
 
+	<h4> Not registered yet? {{  link_to("/users/create","Register now >>")  }} </h4>
+
+	
+
 	@if(Session::has('message'))
 	<p class="{{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
 	@endif
 
 	{{Form::close()}}
+</body>
+</html>

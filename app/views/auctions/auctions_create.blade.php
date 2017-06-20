@@ -15,9 +15,9 @@
 			{{$errors->first('auction_name')}}
 		</li>
 		<li>
-			{{Form::label('min_bid','Minimum Bid Price: ')}}
-			{{Form::Input('float','min_bid')}}
-			{{$errors->first('min_bid')}}
+			{{Form::label('start_price','Start Price: ')}}
+			{{Form::Input('float','start_price')}}
+			{{$errors->first('start_price')}}
 		</li>
 		<li>
 			{{Form::label('reserved_price','Reserved Price: ')}}
@@ -40,6 +40,12 @@
 			{{Form::Input('date','end_date')}}
 			{{Form::Input('time','end_time')}}
 			{{$errors->first('end_time')}}
+		</li>
+
+		<li>
+			{{Form::label('min_bid','Minimum Bid Amount: ')}}
+			{{Form::Input('float','min_bid')}}
+			{{$errors->first('min_bid')}}
 		</li>
 		
 		<li>

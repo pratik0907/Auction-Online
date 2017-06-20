@@ -37,4 +37,7 @@
 		</li>
 		
 	</ul>
+
+	<h4> Already registered? {{ link_to("/login","Login here >>")  }} </h4>
+
 	{{Form::close()}}
