@@ -37,7 +37,7 @@
 		<td>{{$listing->end_time}}</td>
 		<td>{{$listing->last_bid_price}}</td>
 		<td><a href="auction/{{$listing->id}}">View</a></td>
-		<td><a href="auction/{{$listing->id}}/edit">Place Bid</a></td>
+		<td><a href="auction/{{$listing->id}}/place">Place Bid</a></td>
 	</tr>	
 	 @endif
 	 @endforeach

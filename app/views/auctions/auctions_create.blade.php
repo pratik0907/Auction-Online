@@ -57,7 +57,7 @@
 			{{$errors->first('status')}}
 		</li>
 		<li>
-			{{Form::submit('Create Bid')}}
+			{{Form::submit('Create Auction')}}
 		</li>
 		
 	</ul>

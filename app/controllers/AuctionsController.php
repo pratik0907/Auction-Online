@@ -5,7 +5,7 @@ class AuctionsController extends \BaseController {
 	
 	public function index()
 	{
-		//
+		//return 'yes';
 	}
 
 	public function towards_home()
@@ -39,7 +39,7 @@ class AuctionsController extends \BaseController {
 	public function store()
 	{
 
-		$validator= Validator::make(Input::all(),['auction_name'=>'required','min_bid'=>'required','reserved_price'=>'required','selling_price'=>'required','start_date'=>'required','start_time'=>'required','end_date'=>'required','end_time'=>'required','status'=>'required']);
+		$validator= Validator::make(Input::all(),['auction_name'=>'required','start_price'=>'required','reserved_price'=>'required','selling_price'=>'required','start_date'=>'required','start_time'=>'required','end_date'=>'required','end_time'=>'required','min_bid'=>'required','status'=>'required']);
 
 		if($validator->fails())
 		{
@@ -48,14 +48,15 @@ class AuctionsController extends \BaseController {
 
 		$auctions = new Auction;
 		$auctions->auction_name = Input::get('auction_name');
-		$auctions->min_bid = Input::get('min_bid');
+		$auctions->start_price = Input::get('start_price');
 		$auctions->reserved_price = Input::get('reserved_price');
 		$auctions->selling_price = Input::get('selling_price');
-		$auctions->last_bid_price = Input::get('min_bid');
+		$auctions->last_bid_price = Input::get('start_price');
 		$auctions->start_date = Input::get('start_date');
 		$auctions->start_time = Input::get('start_time');
 		$auctions->end_date = Input::get('end_date');
 		$auctions->end_time = Input::get('end_time');
+		$auctions->min_bid = Input::get('min_bid');
 		$auctions->status = Input::get('status');
 		$auctions->user_id = Auth::user()->email;
 		$auctions->save();
@@ -80,7 +81,12 @@ class AuctionsController extends \BaseController {
 
 	public function update($id)
 	{
-		//
+        $id = Input::get('id');
+        dd($id);
+
+		DB::table('auctionsinfo')
+    		->where('id',$id)
+    		->update(array('status'=>'Closed'));
 	}
 
 

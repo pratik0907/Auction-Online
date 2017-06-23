@@ -22,38 +22,18 @@ Route::get('/online_auction', function()
 });
 
 
-
-/*Route::get('home',function()
-{
-	return 'Home Page';
-})->before('auth');*/
+Route::get('login','SessionController@create');
+Route::get('logout','SessionController@destroy');
 
 Route::get('home','AuctionsController@towards_home')->before('auth');
+Route::get('create_auction','AuctionsController@create');
 Route::get('live_auctions','AuctionsController@show');
 Route::get('auction/{id}','AuctionsController@auction_details');
 
-
-Route::get('login','SessionController@create');
-
-Route::get('logout','SessionController@destroy');
-
-Route::get('create_auction','AuctionsController@create');
+Route::get('auction/{id}/place','BidsController@create');
+Route::post('auction/bid/placed','BidsController@list12');
 
 Route::resource('users','UserController');
-
 Route::resource('sessions','SessionController');
-
 Route::resource('auctions','AuctionsController');
 
-/*Route::get('auction/{id}',function($sid)
-{	
-	
-	$listing = Auction::find($sid);
-	if(empty($listing))
-	{
-		return "Invalid url";
-	}
-	return View::make('auctions.show')->with('listing',$listing);
-	//return $listing->auction_name;
-});
-*/

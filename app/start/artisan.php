@@ -11,3 +11,5 @@
 |
 */
 
+Artisan::add(new FirstCommand);
+Artisan::add(new CheckStatus);
