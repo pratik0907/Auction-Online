@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'pratik@cse.ism.ac.in', 'name' => 'Pratik Jain'),
+	'from' => array('address' => 'pratik.droom@gmail.com', 'name' => 'Pratik Jain'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'pratik@cse.ism.ac.in',
+	'username' => 'pratik.droom@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'pratik@1994',
+	'password' => 'pratik1995',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -68,7 +68,7 @@ class CheckStatus extends Command {
 
 				$user = User::where('email','=',$person[0]['user_id'])->get();
 				if(!empty($user)){
-					print_r($user[0]['name']);
+					//print_r($user[0]['name']);
 					Mail::send('email_message', array('name'=>$user[0]['name']), function ($message) use($person, $user){
 
 	            	$message->to($person[0]['user_id'], $user[0]['name'])->subject('Congratulations!');
